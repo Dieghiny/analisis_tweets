@@ -9,8 +9,7 @@ fecha_final <- dlgInput(message = "Fecha final:")$res
 numero_tweets <- dlgInput(message = "Número de tweets solicitados:")$res %>% 
   as.numeric()
 
-#Creación data frame----
-
+# Creación data frame----
 tweets_df <- search_tweets(q = busqueda,
                            n = numero_tweets,
                            lang ="es",
