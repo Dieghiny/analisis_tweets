@@ -31,3 +31,5 @@ tweets_df <- search_tweets(q = busqueda,
 
 palabras_vacias <- tokenize_words(busqueda) %>% 
   purrr::as_vector()
+
+#Prueba de un cambio
