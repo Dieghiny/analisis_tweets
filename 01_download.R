@@ -1,9 +1,12 @@
+# Librerías----
 library(rtweet) # Usar versión 0.7.0
 library(tidyverse)
 library(svDialogs)
 library(lubridate)
 library(janitor)
+library(tokenizers)
 
+# Parámetros de búsqueda----
 busqueda <- dlgInput(message = "Búsqueda:")$res
 fecha_inicio <- dlgInput(message = "Fecha de inicio:")$res
 fecha_final <- dlgInput(message = "Fecha final:")$res
@@ -25,3 +28,6 @@ tweets_df <- search_tweets(q = busqueda,
   dplyr::filter(created_at <= fecha_final) %>% 
   arrange(desc(created_at)) %>% 
   clean_names()
+
+palabras_vacias <- tokenize_words(busqueda) %>% 
+  purrr::as_vector()
