@@ -23,5 +23,3 @@ tweets_df <- search_tweets(q = busqueda,
   dplyr::filter(created_at >= fecha_inicio) %>%
   dplyr::filter(created_at <= fecha_final) %>% 
   arrange(desc(created_at))
-
-#comentario de prueba
