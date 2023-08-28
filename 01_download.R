@@ -2,6 +2,7 @@ library(rtweet) # Usar versión 0.7.0
 library(tidyverse)
 library(svDialogs)
 library(lubridate)
+library(janitor)
 
 busqueda <- dlgInput(message = "Búsqueda:")$res
 fecha_inicio <- dlgInput(message = "Fecha de inicio:")$res
@@ -22,4 +23,5 @@ tweets_df <- search_tweets(q = busqueda,
                                       tzone = "America/Mexico_City")) %>%
   dplyr::filter(created_at >= fecha_inicio) %>%
   dplyr::filter(created_at <= fecha_final) %>% 
-  arrange(desc(created_at))
+  arrange(desc(created_at)) %>% 
+  clean_names()
