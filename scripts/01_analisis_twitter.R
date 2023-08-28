@@ -1,5 +1,5 @@
 # Librerías----
-library(rtweet) # Usar versión 0.7.0
+library(rtweet) # Versión 0.7.0
 library(tidyverse)
 library(svDialogs)
 library(lubridate)
@@ -19,7 +19,9 @@ tweets_df <- search_tweets(q = busqueda,
                            lang ="es",
                            include_rts = FALSE,
                            type = "recent",
-                           retryonratelimit = TRUE) %>% 
+                           retryonratelimit = TRUE)
+
+tweets_df <- tweets_df %>% 
   mutate(created_at = with_tz(created_at,
                               tzone = "America/Mexico_City")) %>%
   mutate(account_created_at = with_tz(account_created_at, 
@@ -30,4 +32,5 @@ tweets_df <- search_tweets(q = busqueda,
   clean_names()
 
 palabras_vacias <- tokenize_words(busqueda) %>% 
-  purrr::as_vector()
+  purrr::as_vector() %>% 
+  unique()
