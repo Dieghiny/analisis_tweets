@@ -3,7 +3,7 @@ library(tidyverse)
 library(svDialogs)
 library(lubridate)
 
-busquea <- dlgInput(message = "Búsqueda:")$res
+busqueda <- dlgInput(message = "Búsqueda:")$res
 fecha_inicio <- dlgInput(message = "Fecha de inicio:")$res
 fecha_final <- dlgInput(message = "Fecha final:")$res
 numero_tweets <- dlgInput(message = "Número de tweets solicitados:")$res %>% 
